@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<style>
+body {
+    margin:0;
+    background:#111;
+    color:#00ff00;
+    font-family: monospace;
+    overflow:hidden;
+}
+.header {
+    background:#075E54;
+    color:white;
+    padding:15px;
+    font-size:18px;
+}
+#screen {
+    padding:15px;
+    font-size:16px;
+    white-space:pre-line;
+}
+.shake {
+    animation: shake 0.05s infinite;
+}
+@keyframes shake {
+    0% { transform: translate(8px, -8px); }
+    25% { transform: translate(-12px, 12px); }
+    50% { transform: translate(12px, 8px); }
+    75% { transform: translate(-8px, -12px); }
+    100% { transform: translate(8px, 8px); }
+}
+#final {
+    display:none;
+    text-align:center;
+    font-size:28px;
+    margin-top:50px;
+    color:white;
+}
+</style>
+</head>
+<body>
+
+<div class="header">WhatsApp Security</div>
+<div id="screen"></div>
+<div id="final">🎉 HAPPY BIRTHDAY 🎂</div>
+
+<script>
+const screen = document.getElementById("screen");
+const final = document.getElementById("final");
+
+const lines = [
+"⚠ Security breach detected...",
+"Accessing chat history...",
+"Uploading embarrassing voice notes...",
+"Sending memes to all contacts...",
+"LOCKING DEVICE..."
+];
+
+let i = 0;
+
+function type() {
+    if(i < lines.length){
+        screen.innerHTML += lines[i] + "\n";
+        i++;
+        setTimeout(type, 800);
+    } else {
+        document.body.classList.add("shake");
+        setTimeout(()=>{
+            document.body.classList.remove("shake");
+            screen.style.display="none";
+            final.style.display="block";
+        },4000);
+    }
+}
+type();
+</script>
+
+</body>
+</html>
